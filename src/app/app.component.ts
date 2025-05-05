@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import e from 'express';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,11 @@ export class AppComponent implements OnInit {
       if (loggedInUser) { 
         this.user = JSON.parse(loggedInUser);
         console.log('Logged in user:', this.user);
+      }
+      else {
+        this.openModal();
+        console.log('No user found in localStorage. Showing login modal.');
+        // this.toggleForm();
       }
     }
   }
