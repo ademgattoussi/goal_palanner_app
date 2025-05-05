@@ -1,0 +1,93 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <form [formGroup]="goalForm" >
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="mb-3">
+                                    <label class="form-label">Goal Title</label>
+                                    <input type="text" formControlName="goalName" class="form-control" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Start Date</label>
+                                            <input type="date" formControlName="startDate" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Target Date</label>
+                                            <input type="date" formControlName="endDate" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea formControlName="description" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-5" formArrayName="milestones">
+                                @for (item of milestoneList.controls; track $index) {
+                                    <ng-container [formGroupName]="$index"]>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label">Title</label>
+                                                    <input type="text" formControlName="milestoneName" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label">Target Date</label>
+                                                    <input type="date"  formControlName="targetDate" class="form-control">
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Description</label>
+                                                    <textarea formControlName="description"  class="form-control"></textarea>
+                                                </div>
+        
+                                            </div>
+                                            
+                                        </div>
+    
+                                    </ng-container>
+                                }
+                                <div class="row">
+                                    <div class="col-12 text-end">
+                                        
+                                            <button class="btn btn-outline-secondary mt-5" (click)="addMilestone()" type="button">+</button>
+    
+            
+                                    </div>
+                                </div>
+                               
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="row pt-3 text-center">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" (click)="onSubmit()">Create Goal</button>
+
+                            </div>
+                        </div>
+                        
+                       
+                      
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
