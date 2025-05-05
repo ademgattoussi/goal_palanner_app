@@ -236,3 +236,5 @@ body {
 .meditation-icon { background-color: #fef3c7; color: #f59e0b; }
 .programming-icon { background-color: #f3e8ff; color: #9333ea; }
 .plants-icon { background-color: #dcfce7; color: #22c55e; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

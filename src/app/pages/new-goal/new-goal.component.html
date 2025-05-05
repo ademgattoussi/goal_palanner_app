@@ -14,13 +14,13 @@
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
-                                            <input type="date" formControlName="startDate" class="form-control">
+                                            <input type="date" [min]="today" formControlName="startDate" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Target Date</label>
-                                            <input type="date" formControlName="endDate" class="form-control">
+                                            <input type="date" [min]="today" formControlName="endDate" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label">Target Date</label>
-                                                    <input type="date"  formControlName="targetDate" class="form-control">
+                                                    <input type="date" [min]="today"  formControlName="targetDate" class="form-control">
                                                 </div>
                                             </div>
                                             

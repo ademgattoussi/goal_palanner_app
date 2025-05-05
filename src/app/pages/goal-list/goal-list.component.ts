@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GoalService } from '../../services/goal.service';
 import { Goal, Milestone } from '../../models/goal.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-goal-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './goal-list.component.html',
   styleUrl: './goal-list.component.css'
 })
@@ -47,6 +48,18 @@ export class GoalListComponent implements OnInit {
     );
   }
 
+  toggleMilestoneCompletion(milestone: Milestone) {
+    milestone.isCompleted = !milestone.isCompleted;
+    this.goalService.updateMilestone(milestone.milestoneId, milestone).subscribe(
+      (response) => {
+        console.log('Milestone updated:', response);
+      },
+      (error) => {
+        console.error('Error updating milestone:', error);
+      }
+    );
+  }
+
   // Helper methods for template calculations
   getCompletedCount(milestones: Milestone[]): number {
     return milestones.filter(m => m.isCompleted).length;
@@ -64,5 +77,19 @@ export class GoalListComponent implements OnInit {
     
     const date = new Date(dateString);
     return date.toLocaleDateString();
+  }
+
+  deleteGoal(goalId: number) {
+    if (confirm('Are you sure you want to delete this goal?')) {
+      this.goalService.deleteGoal(goalId).subscribe(
+        (response) => {
+          console.log('Goal deleted:', response);
+          this.getAllGoalsCreatedByMe(); // Refresh the list after deletion
+        },
+        (error) => {
+          console.error('Error deleting goal:', error);
+        }
+      );
+    }
   }
 }

@@ -11,6 +11,7 @@ import { error } from 'console';
 })
 
 export class NewGoalComponent {
+  today = new Date().toISOString().split('T')[0];
 
   constructor() {
     this.initializeForm();

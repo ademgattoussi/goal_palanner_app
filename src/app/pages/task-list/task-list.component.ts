@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GoalService } from '../../services/goal.service';
 import { TaskService, Task } from '../../services/task.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, MatExpansionModule],
   templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.css'
+  styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
   @ViewChild('modal') modal!: ElementRef;
@@ -26,6 +27,7 @@ export class TaskListComponent implements OnInit {
     userId: 0
   };
 
+  today: string = new Date().toISOString().split('T')[0];;
   dailyTasks: Task[] = [];
   weeklyTasks: Task[] = [];
   monthlyTasks: Task[] = [];
@@ -35,6 +37,8 @@ export class TaskListComponent implements OnInit {
   taskService = inject(TaskService);
 
   ngOnInit() {
+    console.log("date", this.today);
+    
     // Initialize user ID when component loads
     if (this.goalService.user && this.goalService.user.userId) {
       this.newTask.userId = this.goalService.user.userId;
