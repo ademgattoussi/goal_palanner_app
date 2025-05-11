@@ -22,15 +22,15 @@ export class GoalService {
    }
 
   saveGoal(goalData: any) {
-    return this.http.post('http://localhost:8080/api/v1/goal', goalData);
+    return this.http.post('http://localhost:3030/api/v1/goal', goalData);
   }
   getAllGoalsByUserId(id: number) {
-    return this.http.get<Goal[]>(`http://localhost:8080/api/v1/goal?userId=${id}`);
+    return this.http.get<Goal[]>(`http://localhost:3030/api/v1/goal?userId=${id}`);
   }
   updateMilestone(goalId: number, data: any) {
-    return this.http.put(`http://localhost:8080/api/v1/goal/milestone/${goalId}`, data);
+    return this.http.put(`http://localhost:3030/api/v1/goal/milestone/${goalId}`, data);
   }
   deleteGoal(goalId: number) {
-    return this.http.delete(`http://localhost:8080/api/v1/goal/${goalId}`);
+    return this.http.delete(`http://localhost:3030/api/v1/goal/${goalId}`);
   }
 }

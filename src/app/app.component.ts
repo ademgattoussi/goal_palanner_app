@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
 
   onRegister() {
     console.log(this.registerObj);
-    this.http.post('http://localhost:8080/api/v1/user/register', this.registerObj).subscribe(
+    this.http.post('http://localhost:3030/api/v1/user/register', this.registerObj).subscribe(
       (response:any) => {
         console.log('Registration successful:', response);
         alert('Registration successful!');
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
   }
   onLogin() {
     console.log(this.loginObj);
-    this.http.post('http://localhost:8080/api/v1/user/login', this.loginObj).subscribe(
+    this.http.post('http://localhost:3030/api/v1/user/login', this.loginObj).subscribe(
       (response: any) => {
         console.log('Login successful:', response);
         alert('Login successful!');

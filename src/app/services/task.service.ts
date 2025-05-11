@@ -17,7 +17,7 @@ export interface Task {
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = `http://localhost:8080/api/v1/task`;
+  private apiUrl = `http://localhost:3030/api/v1/task`;
   http = inject(HttpClient);
   
   // Get user from local service or storage
